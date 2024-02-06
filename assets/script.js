@@ -1,5 +1,8 @@
 var searchButton = document.getElementById('search-button');
 
+$('.custom-container').each(function(){
+    $(this).hide()
+})
 
 $('#search-button').on('click', function() {
     var cityInput = $('#search-text').val();
@@ -12,10 +15,16 @@ $('.dropdown-item').on('click', function(event){
 
 function cityQuerry(city){
     var apiKey = '40841567bfc00bab4213cc8d746f025f';
-    var apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?&units=imperial&cnt=50&q=' + city + '&appid=' + apiKey;
+    var fiveDayApiUrl = 'https://api.openweathermap.org/data/2.5/forecast?&units=imperial&cnt=50&q=' + city + '&appid=' + apiKey;
     var currentDayApiUrl = 'https://api.openweathermap.org/data/2.5/weather?units=imperial&q=' + city +  '&appid=' + apiKey;
     var iconPre = 'https://openweathermap.org/img/wn/';
     var iconSuf = '@2x.png';
+
+    $('.custom-container').each(function(){
+        $(this).show()
+    })
+
+    $('#input-container').addClass('col-sm-3');
 
     fetch(currentDayApiUrl)
     .then(function(response){
@@ -30,7 +39,7 @@ function cityQuerry(city){
         $('#box-1-6').text('Wind Speed: ' + data.wind.speed + ' MPH');
     })
 
-    fetch(apiUrl)
+    fetch(fiveDayApiUrl)
     .then(function(response) {
         return response.json();
     })
