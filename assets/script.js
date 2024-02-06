@@ -19,12 +19,14 @@ searchButton.addEventListener('click', function(){
             $(this).text(data.city.name)
         })
 
+        //updates main container with the current weather
         $('#box-1-1').text(data.list[0].dt_txt.split(' ')[0]);
         $('#box-1-2').text(data.list[0].weather[0].description);
         $('#img-1').attr('src', iconPre + data.list[0].weather[0].icon + iconSuf);
         $('#box-1-4').text(data.list[0].main.temp + ' F');
         $('#box-1-5').text('Humidity: ' + data.list[0].main.humidity);
 
+        //updates the 4 smaller boxes with the next 4 days of weather
         $('#box-1-6').text('Wind Speed: ' + data.list[0].wind.speed + ' MPH');
         $('#box-2-1').text(data.list[8].dt_txt.split(' ')[0]);
         $('#box-2-2').text(data.list[8].weather[0].description);
