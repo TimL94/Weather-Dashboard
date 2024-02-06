@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
+    crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/style.css">
+    
     <title>Weather Dashboard</title>
 </head>
 <body>
@@ -15,30 +18,41 @@
             </li>
           </ul>
     </header>
-    <div class="continer-fluid d-flex justify-content-around text-center">
+    <div class="continer-fluid d-flex justify-content-around text-center ml-4">
         <div class="row mt-4">
             <div class="col-xs-12 col-sm-3">
                 <h2>Search for a City:</h2>
-                <div class="input-group">
-                    <input id="search-text" type="text" class="form-control" placeholder="Boston" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button id="search-button" class="btn btn-outline-secondary" type="button">Search</button>
+                <div class="input-group row">
+                    <input id="search-text" type="text" class="form-control col-12 text-center border-dark" placeholder="Boston" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append col-12 mt-1">
                     </div>
+                    <button id="search-button" class="btn btn-outline-secondary" type="button">Search</button>
+                </div>
+                <h2>Saved Searches</h2>
+                <div class="dropdown justify-content-center">
+                    <button id="search-dropdown col-12" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Select a City
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item"><button class="btn" type="button">boston</button></li>
+                        <li class="dropdown-item"><button class="btn" type="button">Dover</button></li>
+                        <li class="dropdown-item"><button class="btn" type="button">France</button></li>
+                        <li class="dropdown-item"><button class="btn" type="button">Istanbul</button></li>
+                    </ul>
                 </div>
             </div>
     
-            <div class="col-xs-12 col sm-12 text-center">
-                <div class="row border border-dark rounded">
+            <div class="col-xs-12 col sm-12 justify-content-around">
+                <div class="row">
                     <h3>Current Day</h3>
-                    <div class="col-12  col-xs-12card">
+                    <div class="col-12  col-xs-12 border border-dark rounded custom-bg">
                         <h5 class="card-title custom-city"></h5>
                         <ul class="list-group list-group-flush">
-                            <li id="box-1-1" class="list-group-item "></li>
-                            <li id="box-1-2" class="list-group-item"></li>
-                            <li id="box-1-3" class="list-group-item"><img id="img-1"></li>
-                            <li id="box-1-4" class="list-group-item"></li>
-                            <li id="box-1-5" class="list-group-item"></li>
-                            <li id="box-1-6" class="list-group-item"></li>
+                            <li id="box-1-1" class="list-group-item custom-bg"></li>
+                            <li id="box-1-3" class="list-group-item custom-bg"><img id="img-1"></li>
+                            <li id="box-1-4" class="list-group-item custom-bg"></li>
+                            <li id="box-1-5" class="list-group-item custom-bg"></li>
+                            <li id="box-1-6" class="list-group-item custom-bg"></li>
                         </ul>
     
                     </div>
@@ -46,25 +60,21 @@
 
                 <div class="row d-flex justify-content-between mt-4 text-center">
                     <h3>4 day Forecast</h3>
-                    <div class="col-sm card bg-info border border-dark rounded mx-1">
+                    <div class="col-sm card bg-info border border-dark rounded m-1">
                         <h5 class="card-title custom-city"></h5>
                         <ul class="list-group list-group-flush">
                             <li id="box-2-1" class="list-group-item bg-info"></li>
-                            <li id="box-2-2"  class="list-group-item bg-info"></li>
-
                             <li id="box-2-3" class="list-group-item bg-info"><img id="img-2"></li>
-
                             <li id="box-2-4" class="list-group-item bg-info"></li>
                             <li id="box-2-5" class="list-group-item bg-info"></li>
                             <li id="box-2-6" class="list-group-item bg-info"></li>
                         </ul>
                     </div>
     
-                    <div class="col-sm card bg-info border border-dark rounded mx-1">
+                    <div class="col-sm card bg-info border border-dark rounded m-1">
                         <h5 class="card-title custom-city"></h5>
                         <ul class="list-group list-group-flush">
                             <li id="box-3-1" class="list-group-item bg-info"></li>
-                            <li id="box-3-2"  class="list-group-item bg-info"></li>
                             <li id="box-3-3"  class="list-group-item bg-info"><img id="img-3"></li>
                             <li id="box-3-4"  class="list-group-item bg-info"></li>
                             <li id="box-3-5"  class="list-group-item bg-info"></li>
@@ -72,11 +82,10 @@
                         </ul>
                     </div>
     
-                    <div class="col-sm card bg-info border border-dark rounded mx-1">
+                    <div class="col-sm card bg-info border border-dark rounded m-1">
                         <h5 class="card-title custom-city"></h5>
                         <ul class="list-group list-group-flush">
                             <li id="box-4-1" class="list-group-item bg-info"></li>
-                            <li id="box-4-2" class="list-group-item bg-info"></li>
                             <li id="box-4-3" class="list-group-item bg-info"><img id="img-4"></li>
                             <li id="box-4-4" class="list-group-item bg-info"></li>
                             <li id="box-4-5" class="list-group-item bg-info"></li>
@@ -84,11 +93,10 @@
                         </ul>
                     </div>
                     
-                    <div class="col-sm card bg-info border border-dark rounded mx-1">
+                    <div class="col-sm card bg-info border border-dark rounded m-1">
                         <h5 class="card-title custom-city"></h5>
                         <ul class="list-group list-group-flush">
                             <li id="box-5-1" class="list-group-item bg-info"></li>
-                            <li id="box-5-2" class="list-group-item bg-info"></li>
                             <li id="box-5-3" class="list-group-item bg-info"><img id="img-5"></li>
                             <li id="box-5-4" class="list-group-item bg-info"></li>
                             <li id="box-5-5" class="list-group-item bg-info"></li>
@@ -100,6 +108,15 @@
             
             </div>
     </div>
+    <script 
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
+        crossorigin="anonymous"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+        integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+        crossorigin="anonymous"
+    ></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./assets/script.js"></script>
 </body>

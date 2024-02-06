@@ -1,3 +1,19 @@
 .custum-ul{
     list-style: none;
 }
+
+body{
+    height: 100vh;
+    background-image: radial-gradient(whitesmoke, lightblue);
+}
+
+.custom-bg{
+    background-color: lightgreen;
+}
+
+#search-button{
+    background-color: grey;
+    color: white;
+    width: 100%;
+    margin: 1;
+}
