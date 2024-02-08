@@ -15,7 +15,7 @@ bootstrap, jquerry, dayjs and openweather api are all utilized within this proje
 
 ## Screen Shot
 
-![Screenshot](./assets/Images/scrennshot.png
+![Screenshot](./assets/Images/scrennshot.png)
 
 
 ## Link to deployed application
