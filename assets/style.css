@@ -17,6 +17,7 @@ body{
     margin: 1;
 }
 
+/* This turns the dropdown menu into a scrollable menu */
 .dropdown-menu{
     max-height: 200px;
     overflow-y: scroll;
