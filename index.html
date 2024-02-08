@@ -20,7 +20,7 @@
     </header>
     <div class="continer-fluid d-flex justify-content-around text-center">
         <div class="row mt-4">
-            <div id="input-container" class="col-xs-12justify-content-center">
+            <div id="input-container" class="col-xs-12 justify-content-center">
                 <h2>Search for a City:</h2>
                 <div class="input-group row">
                     <input id="search-text" type="text" class="form-control justify-content-around text-center border-dark" placeholder="Boston" aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -31,19 +31,17 @@
                     <button id="search-dropdown col-12" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Select a City
                     </button>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-item"><button class="btn" type="button">boston</button></li>
-                        <li class="dropdown-item"><button class="btn" type="button">Dover</button></li>
-                        <li class="dropdown-item"><button class="btn" type="button">France</button></li>
+                    <ul id="dropdown-menu" class="dropdown-menu">
                         <li class="dropdown-item"><button class="btn" type="button">Istanbul</button></li>
                     </ul>
                 </div>
+                
             </div>
     
             <div class="col-xs-12 col sm-12 justify-content-around custom-container">
                 <div class="row">
                     <h3>Current Day</h3>
-                    <div class="col-12  col-xs-12 border border-dark rounded custom-bg">
+                    <div class="col-12  col-xs-12 card border border-dark rounded custom-bg">
                         <h5 class="card-title custom-city"></h5>
                         <ul class="list-group list-group-flush">
                             <li id="box-1-1" class="list-group-item custom-bg"></li>
@@ -114,7 +112,7 @@
                     </div>
     
                 </div>
-            
+                
             </div>
     </div>
     <script 

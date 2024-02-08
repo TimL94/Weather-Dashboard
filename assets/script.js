@@ -1,4 +1,8 @@
-var searchButton = document.getElementById('search-button');
+var retrievedCityArray = localStorage.getItem('city');
+
+$(document).ready(function(){
+    createCityButtons();
+})
 
 $('.custom-container').each(function(){
     $(this).hide()
@@ -7,11 +11,82 @@ $('.custom-container').each(function(){
 $('#search-button').on('click', function() {
     var cityInput = $('#search-text').val();
     cityQuerry(cityInput);
+    saveCity($('#search-text').val());
+    $('#search-text').val(null);
 })
-$('.dropdown-item').on('click', function(event){
+$(document).on('click', '.dropdown-item', function(event){
     var selectedCity = event.target.textContent;
     cityQuerry(selectedCity);
 });
+
+
+
+function getSavedCities(){
+    
+    var existingCitiesString = localStorage.getItem('Cities');
+
+    if (existingCitiesString) {
+        var existingCities = JSON.parse(existingCitiesString);
+    }else {
+        var existingCities = [];
+        console.log(existingCities)
+    }
+
+    return existingCities;
+    
+}
+
+function createCityButtons(){
+    var savedCities = getSavedCities();
+    console.log(savedCities)
+    var $dropdownList = $('#dropdown-menu');
+
+    $dropdownList.empty();
+    savedCities.forEach(function(city) {
+    
+        var $listItem = $('<li>', {
+            class: 'dropdown-item'
+        });
+        var $button = $('<button>', {
+            class: 'btn',
+            type: 'button'
+        }).text(city);
+
+    $listItem.append($button);
+    $dropdownList.append($listItem);
+    })
+}
+
+
+
+function saveCity(city){
+    if (city.trim() !== ''){
+        var existingCities = getSavedCities();
+
+        if (!existingCities.includes(city)) {
+            existingCities.push(city);
+
+            var updateCitiesString = JSON.stringify(existingCities);
+
+            localStorage.setItem('Cities', updateCitiesString);
+
+            var $dropdownList = $('#dropdown-menu');
+
+            var $listItem = $('<li>', {
+                class: 'dropdown-item'
+            });
+            
+            var $button = $('<button>', {
+                class: 'btn',
+                type: 'button'
+            }).text(city);
+    
+            $listItem.append($button);
+            $dropdownList.append($listItem);
+        }
+    }
+}
+
 
 function cityQuerry(city){
     var apiKey = '40841567bfc00bab4213cc8d746f025f';
@@ -19,6 +94,7 @@ function cityQuerry(city){
     var currentDayApiUrl = 'https://api.openweathermap.org/data/2.5/weather?units=imperial&q=' + city +  '&appid=' + apiKey;
     var iconPre = 'https://openweathermap.org/img/wn/';
     var iconSuf = '@2x.png';
+
 
     $('.custom-container').each(function(){
         $(this).show()
@@ -55,35 +131,36 @@ function cityQuerry(city){
         //updates main container with the current weather
 
         //updates the four smaller boxes with the next days
-        $('#box-2-1').text(data.list[0].dt_txt.split(' ')[0]);
-        $('#img-2').attr('src', iconPre + data.list[0].weather[0].icon + iconSuf);
-        $('#box-2-4').text('Temp: ' + data.list[0].main.temp + ' F');
-        $('#box-2-5').text('Humidity: ' + data.list[0].main.humidity);
-        $('#box-2-6').text('Wind Speed: ' + data.list[0].wind.speed + ' MPH');
+        $('#box-2-1').text(data.list[4].dt_txt.split(' ')[0]);
+        $('#img-2').attr('src', iconPre + data.list[4].weather[0].icon + iconSuf);
+        $('#box-2-4').text('Temp: ' + data.list[4].main.temp + ' F');
+        $('#box-2-5').text('Humidity: ' + data.list[4].main.humidity);
+        $('#box-2-6').text('Wind Speed: ' + data.list[4].wind.speed + ' MPH');
 
-        $('#box-3-1').text(data.list[8].dt_txt.split(' ')[0]);
-        $('#img-3').attr('src', iconPre + data.list[8].weather[0].icon + iconSuf);
-        $('#box-3-4').text('Temp: ' + data.list[8].main.temp + ' F');
-        $('#box-3-5').text('Humidity: ' + data.list[8].main.humidity);
-        $('#box-3-6').text('Wind Speed: ' + data.list[8].wind.speed + ' MPH');
+        $('#box-3-1').text(data.list[12].dt_txt.split(' ')[0]);
+        $('#img-3').attr('src', iconPre + data.list[12].weather[0].icon + iconSuf);
+        $('#box-3-4').text('Temp: ' + data.list[12].main.temp + ' F');
+        $('#box-3-5').text('Humidity: ' + data.list[12].main.humidity);
+        $('#box-3-6').text('Wind Speed: ' + data.list[12].wind.speed + ' MPH');
 
-        $('#box-4-1').text(data.list[16].dt_txt.split(' ')[0]);
-        $('#img-4').attr('src', iconPre + data.list[16].weather[0].icon + iconSuf);
-        $('#box-4-4').text('Temp: ' + data.list[16].main.temp + ' F');
-        $('#box-4-5').text('Humidity: ' + data.list[16].main.humidity);
-        $('#box-4-6').text('Wind Speed: ' + data.list[16].wind.speed + ' MPH');
+        $('#box-4-1').text(data.list[20].dt_txt.split(' ')[0]);
+        $('#img-4').attr('src', iconPre + data.list[20].weather[0].icon + iconSuf);
+        $('#box-4-4').text('Temp: ' + data.list[20].main.temp + ' F');
+        $('#box-4-5').text('Humidity: ' + data.list[20].main.humidity);
+        $('#box-4-6').text('Wind Speed: ' + data.list[20].wind.speed + ' MPH');
 
-        $('#box-5-1').text(data.list[31].dt_txt.split(' ')[0]);
-        $('#img-5').attr('src', iconPre + data.list[31].weather[0].icon + iconSuf);
-        $('#box-5-4').text('Temp: ' + data.list[31].main.temp + ' F');
-        $('#box-5-5').text('Humidity: ' + data.list[31].main.humidity);
-        $('#box-5-6').text('Wind Speed: ' + data.list[31].wind.speed + ' MPH');
+        $('#box-5-1').text(data.list[28].dt_txt.split(' ')[0]);
+        $('#img-5').attr('src', iconPre + data.list[28].weather[0].icon + iconSuf);
+        $('#box-5-4').text('Temp: ' + data.list[28].main.temp + ' F');
+        $('#box-5-5').text('Humidity: ' + data.list[28].main.humidity);
+        $('#box-5-6').text('Wind Speed: ' + data.list[28].wind.speed + ' MPH');
 
-        $('#box-6-1').text(data.list[39].dt_txt.split(' ')[0]);
-        $('#img-6').attr('src', iconPre + data.list[38].weather[0].icon + iconSuf);
-        $('#box-6-4').text('Temp: ' + data.list[39].main.temp + ' F');
-        $('#box-6-5').text('Humidity: ' + data.list[39].main.humidity);
-        $('#box-6-6').text('Wind Speed: ' + data.list[39].wind.speed + ' MPH');
+        $('#box-6-1').text(data.list[36].dt_txt.split(' ')[0]);
+        $('#img-6').attr('src', iconPre + data.list[36].weather[0].icon + iconSuf);
+        $('#box-6-4').text('Temp: ' + data.list[36].main.temp + ' F');
+        $('#box-6-5').text('Humidity: ' + data.list[36].main.humidity);
+        $('#box-6-6').text('Wind Speed: ' + data.list[36].wind.speed + ' MPH');
 
     })
+
 };
